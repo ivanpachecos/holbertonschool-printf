@@ -1,46 +1,47 @@
-#include <stdio.h>
-#include <stdarg.h>
 #include "main.h"
-
 /**
-  *
-  *
-  *
-  *
-  *
-  */
-int _printf(const char *format, ...) 
+* _printf - main function to print in console
+* @format: array to print and check type
+* Return: count of character printed
+**/
+int _printf(const char *format, ...)
 {
-	va_list args;
-	int count = 0;
-	va_start(args, format);
+	int count = -1;
 
-    
-	while (*format != '\0') {
-		if (*format == '%')
+	if (format != NULL)
+	{
+		int i;
+		va_list ar_list;
+		int (*o)(va_list);
+
+		va_start(ar_list, format);
+
+		if (format[0] == '%' && format[1] == '\0')
+			return (-1);
+
+		count = 0;
+
+		for (i = 0; format[i] != '\0'; i++)
 		{
-			format++;
-			switch (*format)
+			if (format[i] == '%')
 			{
-				case 'c':
-					count += print_char(va_arg(args, int));
-					break;
-				case 's':
-					count += print_str(va_arg(args, char *));
-					break;
-				case '%':
-					count += print_percent();	
-					break;
-				default:
-					_putchar('%');
-					_putchar(*format);
-					break;
+				if (format[i + 1] == '%')
+				{
+					count += _putchar(format[i]);
+					i++;
+				}
+				else if (format[i + 1] != '\0')
+				{
+					o = get_func(format[i + 1]);
+					count += (o ? o(ar_list) : _putchar(format[i]) + _putchar(format[i + 1]));
+					i++;
+				}
 			}
+			else
+				count += _putchar(format[i]);
 		}
-		else
-			_putchar(*format);
-		format++;
+		va_end(ar_list);
 	}
-	va_end(args);
+
 	return (count);
 }
