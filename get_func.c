@@ -1,27 +1,48 @@
 #include "main.h"
 #include <stdio.h>
-
 /**
- * get_func - look for the specifier
- * @x: variable to the function
- * Return: function
- */
-int (*get_func(char x))(va_list)
+* _printf - main function to print in console
+* @format: array to print and check type
+* Return: count of character printed
+**/
+int _printf(const char *format, ...)
 {
-	int i = 0;
-	spec arr[] = {
-		{"c", print_c},
-		{"s", print_s},
-		{"%", print_percent},
-		{"d", print_d},
-		{"i", print_i},
-		{NULL, NULL}
-	};
-	while (arr[i].valid)
+	int count = -1;
+
+	if (format != NULL)
 	{
-		if (x == arr[i].valid[0])
-			return (arr[i].f);
-		i++;
+		int i;
+		va_list ar_list;
+		int (*o)(va_list);
+
+		va_start(ar_list, format);
+
+		if (format[0] == '%' && format[1] == '\0')
+			return (-1);
+
+		count = 0;
+
+		for (i = 0; format[i] != '\0'; i++)
+		{
+			if (format[i] == '%')
+			{
+				if (format[i + 1] == '%')
+				{
+					count += _putchar(format[i]);
+					i++;
+				}
+				else if (format[i + 1] != '\0')
+				{
+					o = get_func(format[i + 1]);
+					count += (o ? o(ar_list) : _putchar(format[i]) + _putchar(format[i + 1]));
+					i++;
+				}
+			}
+			else
+				count += _putchar(format[i]);
+		}
+		va_end(ar_list);
 	}
-	return (NULL);
+
+	return (count);
 }
