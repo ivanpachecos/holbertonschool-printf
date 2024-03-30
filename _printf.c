@@ -29,7 +29,7 @@ int _printf(const char *format, ...)
 					count += print_str(va_arg(args, char *));
 					break;
 				case '%':
-					_putchar('%');
+					count += print_percent();	
 					break;
 				default:
 					_putchar('%');
@@ -38,7 +38,7 @@ int _printf(const char *format, ...)
 			}
 		}
 		else
-			count += _putchar(*format);
+			_putchar(*format);
 		format++;
 	}
 	va_end(args);
