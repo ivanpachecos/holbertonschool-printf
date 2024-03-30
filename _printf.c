@@ -29,12 +29,11 @@ int _printf(const char *format, ...)
 					count += print_str(va_arg(args, char *));
 					break;
 				case '%':
-					count += print_porcent();
+					_putchar('%');
 					break;
 				default:
 					_putchar('%');
 					_putchar(*format);
-					count += 2;
 					break;
 			}
 		}
