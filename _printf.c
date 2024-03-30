@@ -1,4 +1,6 @@
 #include "main.h"
+#include <stdarg.h>
+#include <stddef.h>
 /**
 * _printf - main function to print in console
 * @format: array to print and check type
