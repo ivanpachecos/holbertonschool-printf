@@ -5,7 +5,6 @@
   * print_format - Prints a format
   * @format: The format to prints
   * @args: A list of variadic arguments
-  *
   * Return: The length of the format
   */
 int print_format(const char *format, va_list args)
