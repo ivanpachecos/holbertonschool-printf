@@ -1,11 +1,13 @@
 #include "main.h"
 #include <stdarg.h>
 #include <stddef.h>
+
 /**
 * _printf - Same with printf function
 * @format: string to remplace %s, %c etc...
 * Return: Always size of output
 */
+
 int _printf(const char *format, ...)
 {
 	va_list args;
