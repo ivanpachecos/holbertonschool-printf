@@ -1,10 +1,13 @@
 #include "main.h"
 
 /**
-  *
-  *
-  *
-  */
+ * func_d - add a value to buff
+ * @buff: str var
+ * @count: index counter
+ * @value: value in the index
+ * Return: int
+ */
+
 int print_char(char c)
 {
 	_putchar(c);
