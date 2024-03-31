@@ -5,7 +5,6 @@
 /**
   * _print_int_binary - Prints a int converted to binary
   * @args: A list of variadic arguments
-  *
   * Return: The number of printed digits
   */
 int _print_int_binary(va_list args)
