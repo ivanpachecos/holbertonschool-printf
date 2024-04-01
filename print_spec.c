@@ -7,6 +7,7 @@
   *
   * Return: The length of the specifier
   */
+
 int _print_spec(char format, va_list args)
 {
 	int index  = 0, length = 0;
