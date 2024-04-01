@@ -10,38 +10,38 @@
 int print_format(const char *format, va_list args)
 {
 	int count = 0;
-	int i = 0;
+	int index = 0;
 
-	while (format && format[i])
+	while (format && format[index])
 	{
-		if (format[i] == '%')
+		if (format[index] == '%')
 		{
-			if (format[i + 1] == '\0')
+			if (format[index + 1] == '\0')
 				return (-1);
 
-			i++;
+			index++;
 
-			while (format[i] == ' ')
-				i++;
+			while (format[index] == ' ')
+				index++;
 
-			if (format[i] == '%')
-				count += _putchar(format[i]);
+			if (format[index] == '%')
+				count += _putchar(format[index]);
 
-			if (_validate_char(format[i]) == 0)
+			if (_validate_char(format[index]) == 0)
 			{
-				count = _print_invalid_spec(format[i - 1], format[i], count);
+				count = _print_invalid_spec(format[index - 1], format[index], count);
 			}
 			else
 			{
-				count += _print_spec(format[i], args);
+				count += _print_spec(format[index], args);
 			}
 		}
 		else
 		{
-			count += _putchar(format[i]);
+			count += _putchar(format[index]);
 		}
 
-		i++;
+		index++;
 	}
 
 	return (count);
@@ -56,22 +56,21 @@ int print_format(const char *format, va_list args)
   */
 int _print_spec(char format, va_list args)
 {
-	int i  = 0, length = 0;
-	spc_dt _types[] = {
+	int index  = 0, length = 0;
+	fmt_spc f_list[] = {
 		{"c", print_char},
 		{"s", _print_a_string},
 		{"d", _print_a_integer},
-		{"i", _print_a_integer},
-		{"b", _print_int_binary},
+		{"index", _print_a_integer},
 		{NULL, NULL}
 	};
 
-	while (_types[i].specifier)
+	while (f_list[index].specifier)
 	{
-		if (*_types[i].specifier == format)
-			length = _types[i].f(args);
+		if (*f_list[index].specifier == format)
+			length = f_list[index].f(args);
 
-		i++;
+		index++;
 	}
 
 	return (length);
@@ -110,12 +109,12 @@ int _print_invalid_spec(char prev_format, char format, int count)
   */
 int _validate_char(char _type)
 {
-	char _types[] = {'c', 's', 'd', 'i', 'b', '%'};
+	char f_list[] = {'c', 's', 'd', 'i', 'b', '%'};
 	int i = 0;
 
-	while (_types[i])
+	while (f_list[i])
 	{
-		if (_types[i] == _type)
+		if (f_list[i] == _type)
 			return (1);
 		i++;
 	}
