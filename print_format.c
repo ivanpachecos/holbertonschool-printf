@@ -61,7 +61,7 @@ int _print_spec(char format, va_list args)
 		{"c", print_char},
 		{"s", _print_a_string},
 		{"d", _print_a_integer},
-		{"index", _print_a_integer},
+		{"i", _print_a_integer},
 		{NULL, NULL}
 	};
 
