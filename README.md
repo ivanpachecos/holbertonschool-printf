@@ -13,4 +13,4 @@ The `printf` project is a custom implementation of the text output function prin
 
 
 
-
+Authors: Ivan Pachecho, Clever Edu Perea
