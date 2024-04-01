@@ -1,0 +1,29 @@
+.SH DESCRIPTION
+.B _my_printf()
+-_my_printf() is a custom implementation of printf() that prints formatted data.
+.SH RETURN VALUE
+Returns the number of characters printed, excluding the null byte placed at the end of the strings. If an error occurs, returns -1.
+.SH SPECIFIERS
+Specifiers are characters put after a % sign. They specify which format is required to apply to the data.
+.TP
+.B c
+Prints a single character.
+.TP
+.B s
+Prints a string, which is an array of characters.
+.TP
+.B d
+Prints a decimal.
+.TP
+.B i
+Prints an integer.
+.SH EXAMPLE
+Print the name, last name, and age of a person: name and last name are pointers to strings, and age is an integer:
+#include "main.h"
+_my_printf("%s, %s %d, \\n", name, last_name, age);
+.SH SEE ALSO
+.I printf(3)
+.SH BUGS
+No detected bugs.
+.SH AUTHOR
+Clever Perea, Ivan Pacheco.
