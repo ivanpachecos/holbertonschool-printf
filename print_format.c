@@ -30,6 +30,7 @@ int print_format(const char *format, va_list args)
 				count = _print_invalid_spec(format[index - 1], format[index], count);
 			else
 				count += _print_spec(format[index], args);
+		}
 		else
 			count += _putchar(format[index]);
 
