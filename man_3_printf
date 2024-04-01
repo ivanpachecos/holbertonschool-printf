@@ -1,29 +1,43 @@
+.TH MAN_3_PRINTF 3 "March 2024" "Holberton School"
+.SH NAME
+man_3_printf \- print formatted output
+.SH SYNOPSIS
+\fB#include <main.h>\fR
+.br
+\fBint man_3_printf(const char *format, ...);\fR
 .SH DESCRIPTION
-.B _my_printf()
--_my_printf() is a custom implementation of printf() that prints formatted data.
+The \fBman_3_printf\fR function formats and prints data to the standard output according to a format string.
 .SH RETURN VALUE
-Returns the number of characters printed, excluding the null byte placed at the end of the strings. If an error occurs, returns -1.
-.SH SPECIFIERS
-Specifiers are characters put after a % sign. They specify which format is required to apply to the data.
+On success, \fBman_3_printf\fR returns the total number of characters written. If an output error is encountered, a negative value is returned.
+.SH FORMAT SPECIFICATIONS
+The format string may contain zero or more directives, which are either ordinary characters (not \fB%\fR) or conversion specifications, each of which results in fetching zero or more subsequent arguments.
+.PP
+The conversion specifications consist of a \fB%\fR character followed by an optional \fB-\fR flag, an optional minimum field width, an optional \fB.\fR precision, and a conversion specifier character.
+.PP
+The following conversion specifiers are supported:
 .TP
-.B c
+\fB%c\fR
 Prints a single character.
 .TP
-.B s
-Prints a string, which is an array of characters.
+\fB%s\fR
+Prints a null-terminated string.
 .TP
-.B d
-Prints a decimal.
+\fB%d\fR, \fB%i\fR
+Prints an integer in decimal.
 .TP
-.B i
-Prints an integer.
-.SH EXAMPLE
-Print the name, last name, and age of a person: name and last name are pointers to strings, and age is an integer:
-#include "main.h"
-_my_printf("%s, %s %d, \\n", name, last_name, age);
+\fB%%\fR
+Prints a single \fB%\fR character.
+.SH EXAMPLES
+The following examples demonstrate the usage of \fBman_3_printf\fR:
+.PP
+\fBman_3_printf("Hello, %s!\n", "world");\fR
+.br
+\fBman_3_printf("The answer is %d.\n", 42);\fR
+.SH BUGS
+This function is a simplified version of the standard \fBprintf\fR function and may not support all its features.
 .SH SEE ALSO
-.I printf(3)
-.---------
-No detected bugs.
+\fBprintf\fR(3)
 .SH AUTHOR
-Clever Perea, Ivan Pacheco.
+This manual page was written by [Ivan Pacheco and Clever Perea].
+.SH COPYRIGHT
+Copyright (C) [Year] Holberton School.
