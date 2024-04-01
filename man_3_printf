@@ -1,0 +1,4 @@
+man_3_printf - Prints a formatted string
+
+man_3_printf is a function that formats and prints data to the standard
+output according to a format string.
