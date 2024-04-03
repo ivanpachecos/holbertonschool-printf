@@ -9,6 +9,7 @@ int print_format(const char *format, va_list args)
 {
 	int count = 0;
 	int index = 0;
+
 	while (format && format[index])
 	{
 		if (format[index] == '%')
