@@ -10,7 +10,7 @@
 
 int _print_spec(char format, va_list args)
 {
-	int index  = 0, length = 0;
+	int index  = 0;
 	fmt_spc f_list[] = {
 		{"c", print_char},
 		{"s", _print_a_string},
@@ -22,12 +22,12 @@ int _print_spec(char format, va_list args)
 	while (f_list[index].specifier)
 	{
 		if (*f_list[index].specifier == format)
-			length = f_list[index].f(args);
+			return (f_list[index].f(args));
 
 		index++;
 	}
 
-	return (length);
+	return (0);
 }
 
 /**
